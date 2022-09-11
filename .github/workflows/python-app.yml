@@ -36,7 +36,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: 开始发送程序
       run: |
-        python ./main.py
+        python ../main.py
 
     env:
       APP_ID: ${{ secrets.APP_ID }}
