@@ -8,7 +8,7 @@ import schedule
 import signal
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--cfg', type=str, default='config.yaml')
+parser.add_argument('--cfg', type=str, default='config_test.yaml')
 args = parser.parse_args()
 
 
