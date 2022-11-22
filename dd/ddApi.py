@@ -13,8 +13,8 @@ nowtime = datetime.utcnow() + timedelta(hours=8)  # 东八区时间
 today = datetime.strptime(str(nowtime.date()), "%Y-%m-%d")  # 今天的日期
 print("nowtime:{} today:{}".format(nowtime, today))
 nowdatetime = "{} {}".format(today, nowtime)
-access_token = os.getenv('DD_ACCESS_TOKEN')
-secret = os.getenv('DD_SIGN_SECRET')
+access_tokens = os.getenv('DD_ACCESS_TOKEN')
+secrets = os.getenv('DD_SIGN_SECRET')
 
 # 彩虹屁 接口不稳定，所以失败的话会重新调用，直到成功
 def get_words(times=5):
@@ -27,7 +27,7 @@ def get_words(times=5):
     return r
 
 
-def createSign():
+def createSign(secret):
     timestamp = str(round(time.time() * 1000))
     secret_enc = secret.encode('utf-8')
     string_to_sign = '{}\n{}'.format(timestamp, secret)
@@ -39,9 +39,9 @@ def createSign():
     return timestamp, sign
 
 
-def sendPost():
+def sendPost(access_token, secret):
     try:
-        timestamp, sign = createSign()
+        timestamp, sign = createSign(secret)
         params = {'access_token': access_token, 'sign': sign, 'timestamp': timestamp}
         jsonData = json.dumps(createJsonContent())
         print(jsonData)
@@ -73,4 +73,9 @@ def getBingPic():
 
 
 if __name__ == '__main__':
-    sendPost()
+    ats = access_tokens.split("\n")
+    ss = secrets.split("\n")
+    index = 0
+    for at in ats:
+        sendPost(at, ss[index])
+        index = index + 1

@@ -17,6 +17,11 @@ def send_weather_remind_message_now(env):
     subprocess.run([f"{sys.executable}", "weatherRemind.py"], env=env)
     return
 
+def send_dd_now(env):
+    print("running...")
+    subprocess.run([f"{sys.executable}", "dd/ddApi.py"], env=env)
+    return
+
 
 def signal_handler(signum, frame):
     print("\n程序结束！")
@@ -24,6 +29,13 @@ def signal_handler(signum, frame):
 
 
 signal.signal(signal.SIGINT, signal_handler)
+def testWeather(env):
+    send_weather_remind_message_now(env)
+    schedule.every().day.at(config['DAILY_TIME']).do(send_weather_remind_message_now, env)
+
+    while True:
+        schedule.run_pending()
+        time.sleep(50)  # wait
 
 if __name__ == '__main__':
     with open(args.cfg, "r", encoding="utf-8") as fd:
@@ -34,12 +46,10 @@ if __name__ == '__main__':
         config['BIRTHDAY'] = '\n'.join(config['BIRTHDAY'])
     else:
         config['BIRTHDAY'] = config['BIRTHDAY']
-
+    config['DD_ACCESS_TOKEN'] = '\n'.join(config['DD_ACCESS_TOKEN'])
+    config['DD_SIGN_SECRET'] = '\n'.join(config['DD_SIGN_SECRET'])
     env = {**os.environ, **config}
     print("开始运行，等待定时触发...")
-    send_weather_remind_message_now(env)
-    schedule.every().day.at(config['DAILY_TIME']).do(send_weather_remind_message_now, env)
+    testWeather(env)
+    send_dd_now(env)
 
-    while True:
-        schedule.run_pending()
-        time.sleep(50)  # wait
