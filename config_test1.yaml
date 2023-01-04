@@ -1,0 +1,25 @@
+DAILY_TIME: "10:00" # 每日定时发送时间。该时间为系统时间，如果当前系统时间不为北京时间需要自行进行换算
+
+START_DATE: "2016-01-01" # 纪念日
+CITY: "上海"
+
+BIRTHDAY:
+  - "10-05"
+
+APP_ID: "wx8eacad72cdd21c3a"
+APP_SECRET: "bdbbb90bc6ebc51183739600aa510b0d"
+
+USER_ID:
+  - "oTuR-6ZK2zz80jOmFvmBYbFxCRMw"
+  - "oTuR-6WmSXifCRPAJ5icrn6RKE64"
+  - "oTuR-6aZmqvG5ug7tjnFbHFljgd4"
+TEMPLATE_ID: "rzwNPqo-P0SWv2RiXZMZLNOqPGPCvsMveZpZn1bhtow"
+
+DD_ACCESS_TOKEN:
+  - "5d589d5e727c4c4f4679badbec9329f78570a67bbc5c979adbd1a1b8797d5e5c"
+  - "cb9d14acc9ba08cc247d1eec6832ec3ec352c9921efb6d01a27fcacdc227609e"
+  - "ec6bccee60fc1b3a2fb972e537f9b2dd90ead2e15a2fa8d39724bcb70db578b5"
+DD_SIGN_SECRET:
+  - "SEC21e1b9d98f6decc0cdd7f32b118a893c9d791bb68712a5dc4a26ff864bee8dda"
+  - "SECb61bfa3c76aee9e3b9f14a23721a1d9a97e20df7e9f293c4c72bfc70e29deed0"
+  - "SEC3766f2d5d2482eaac6b690b1b66b1b95e00359a8e51395def52b04053494bcab"

@@ -12,6 +12,7 @@ args = parser.parse_args()
 def send_dd_now(env):
     print("running...")
     subprocess.run([f"{sys.executable}", "ddApi.py"], env=env)
+    subprocess.run([f"{sys.executable}", "xbApi.py"], env=env)
     return
 
 

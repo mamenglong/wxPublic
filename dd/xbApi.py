@@ -56,8 +56,8 @@ def createJsonContent():
     return {
         "msgtype": "markdown",
         "markdown": {
-            "title": "点饭提醒",
-            "text": """#### 点饭提醒 ![来一幅]({}) 
+            "title": "下班提醒",
+            "text": """#### 下班提醒 ![来一幅]({}) 
                        >日期 {}  
                        >鸡汤：{}
                     """.format(getBingPic(), nowtime, get_words(5))
