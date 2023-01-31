@@ -1,7 +1,7 @@
 import os
 from datetime import datetime, timedelta
 from chinese_calendar import is_workday
-from tools.bingtools import getBingPic
+from tools.bingtools import getPicUrl
 from tools.ddtools import sendPost
 from tools.wordtools import get_words
 
@@ -21,7 +21,7 @@ def createJsonContent():
             "text": """
 #### 点饭提醒 ![来一幅]({}) 
 >日期 {}  
->文案：{}""".format(getBingPic(), nowtime, get_words(5))
+>文案：{}""".format(getPicUrl(), nowtime, get_words(5))
         },
         "at": {
             "isAtAll": True
