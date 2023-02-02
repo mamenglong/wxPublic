@@ -1,9 +1,9 @@
 import os
 from datetime import datetime, timedelta
 from chinese_calendar import is_workday
-from dd.tools.bingtools import getPicUrl
-from dd.tools.ddtools import sendPost
-from dd.tools.wordtools import get_words
+import dd.tools.bingtools
+import dd.tools.ddtools
+import dd.tools.wordtools
 
 nowtime = datetime.utcnow() + timedelta(hours=8)  # 东八区时间
 today = datetime.strptime(str(nowtime.date()), "%Y-%m-%d")  # 今天的日期
@@ -21,7 +21,7 @@ def createJsonContent():
             "text": """
 #### 点饭提醒 ![来一幅]({}) 
 >日期 {}  
->文案：{}""".format(getPicUrl(), nowtime, get_words(5))
+>文案：{}""".format(dd.tools.bingtools.getPicUrl(), nowtime, dd.tools.wordtools.get_words(5))
         },
         "at": {
             "isAtAll": True
@@ -39,7 +39,7 @@ if __name__ == '__main__':
         ss = secrets.split("\n")
         index = 0
         for at in ats:
-            sendPost(at, ss[index], createJsonContent())
+            dd.tools.ddtools.sendPost(at, ss[index], createJsonContent())
             index = index + 1
     else:
         print("休息日")
