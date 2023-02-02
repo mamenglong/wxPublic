@@ -8,10 +8,10 @@ on:
     branches: [ "master" ]
 #  pull_request:
 #    branches: [ "master" ]
-  schedule:
+#  schedule:
     # * is a special character in YAML so you have to quote this string
     # * utc时间据我们慢8个小时 https://crontab.guru/
-    - cron:  '40 10 * * 1-5'
+  #  - cron:  '40 10 * * 1-5'
 permissions:
   contents: read
 
@@ -45,6 +45,7 @@ jobs:
     - run: python cs/cs.py
     - name: run
       run: python dd/ddApi.py
+    - run: python dd/xbApi.py
     env:
       DD_ACCESS_TOKEN: ${{ secrets.DD_TEST_ACCESS_TOKEN }}
       DD_SIGN_SECRET: ${{ secrets.DD_TEST_SIGN_SECRET }}
