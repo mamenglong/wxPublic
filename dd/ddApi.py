@@ -3,6 +3,8 @@ import sys
 from datetime import datetime, timedelta
 from chinese_calendar import is_workday
 
+print("path:" + sys.path.__str__())
+sys.path.append("tools")
 from dd.tools.bingtools import getPicUrl
 from dd.tools.ddtools import sendPost
 from dd.tools.wordtools import get_words
@@ -32,8 +34,6 @@ def createJsonContent():
 
 
 if __name__ == '__main__':
-    print("path:"+sys.path.__str__())
-    sys.path.append("tools")
     date = datetime.now().date()
     #date = datetime(2023, 1, 2)
     print(date)
