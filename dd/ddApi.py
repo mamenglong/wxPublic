@@ -3,11 +3,11 @@ import sys
 from datetime import datetime, timedelta
 from chinese_calendar import is_workday
 
-print("path:" + sys.path.__str__())
-sys.path.append("tools")
-from dd.tools.bingtools import getPicUrl
-from dd.tools.ddtools import sendPost
-from dd.tools.wordtools import get_words
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+
+from tools.bingtools import getPicUrl
+from tools.ddtools import sendPost
+from tools.wordtools import get_words
 
 nowtime = datetime.utcnow() + timedelta(hours=8)  # 东八区时间
 today = datetime.strptime(str(nowtime.date()), "%Y-%m-%d")  # 今天的日期
