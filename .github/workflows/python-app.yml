@@ -49,3 +49,4 @@ jobs:
       BIRTHDAY: ${{ secrets.BIRTHDAY }}
       CITY: ${{ secrets.CITY }}
       WEATHER_KEY: ${{ secrets.WEATHER_KEY }}
+      WEDDING_ANNIVERSARY_DATE: ${{ secrets.WEDDING_ANNIVERSARY_DATE }}
