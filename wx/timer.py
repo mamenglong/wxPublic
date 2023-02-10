@@ -14,7 +14,7 @@ args = parser.parse_args()
 
 def send_weather_remind_message_now(env):
     print("running...")
-    subprocess.run([f"{sys.executable}", "weatherRemind.py"], env=env)
+    subprocess.run([f"{sys.executable}", "wx/weatherRemind.py"], env=env)
     return
 
 def send_dd_now(env):
