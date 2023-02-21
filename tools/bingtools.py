@@ -23,15 +23,6 @@ urlList = [
     "https://api.r10086.com/img-api.php?type=少女前线1",
     "https://api.ixiaowai.cn/mcapi/mcapi2.php",
     "https://api.ixiaowai.cn/api/api.php",
-    "https://api.r10086.com/img-api.php?zsy=Fate",
-    "https://api.r10086.com/img-api.php?zsy=赛马娘",
-    "https://api.r10086.com/img-api.php?type=少女前线1",
-    "https://api.r10086.com/img-api.php?type=P站系列1",
-    "https://api.r10086.com/img-api.php?type=P站系列2",
-    "https://api.r10086.com/img-api.php?type=P站系列3",
-    "https://api.r10086.com/img-api.php?type=P站系列4",
-    "https://api.r10086.com/img-api.php?type=少女写真1",
-    "https://api.r10086.com/img-api.php?zsy=橘里橘气",
 ]
 
 
