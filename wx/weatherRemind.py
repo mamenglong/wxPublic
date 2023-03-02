@@ -28,6 +28,13 @@ user_ids = os.getenv('USER_ID', '').split("\n")
 template_id = os.getenv('TEMPLATE_ID')
 weather_key = os.getenv('WEATHER_KEY')
 
+otherdays = [
+    {
+        "date": "2023-06-07",
+        "msg": "距离{}还有『{}』天",
+        "type": "countdown"
+    }
+]
 if app_id is None or app_secret is None:
     print('请设置 APP_ID 和 APP_SECRET')
     exit(422)
@@ -102,7 +109,7 @@ data = {
         "color": get_random_color()
     },
     "date": {
-        "value": "今天是 "+today.strftime('%Y年%m月%d日'),
+        "value": "今天是 " + today.strftime('%Y年%m月%d日'),
         "color": get_random_color()
     },
     "week_day": {
@@ -114,9 +121,9 @@ data = {
         "color": get_random_color()
     },
     "temperature": {
-            "value": "温度『{}°』".format(weather['temp']),
-            "color": get_random_color()
-        },
+        "value": "温度『{}°』".format(weather['temp']),
+        "color": get_random_color()
+    },
     "humidity": {
         "value": "湿度『{}%』".format(weather['humidity']),
         "color": get_random_color()
@@ -134,11 +141,13 @@ data = {
         "color": get_random_color()
     },
     "marry_days": {
-        "value": "自从 {} 结婚已经 {}天 啦".format(wedding_anniversary_date, get_memorial_days_count(wedding_anniversary_date)),
+        "value": "自从 {} 结婚已经 {}天 啦".format(wedding_anniversary_date,
+                                                   get_memorial_days_count(wedding_anniversary_date)),
         "color": get_random_color()
     },
     "wedding_anniversary_days": {
-        "value": "距离下一次结婚纪念日{}还有: {}天".format(wedding_anniversary_date_day, get_counter_left(wedding_anniversary_date)),
+        "value": "距离下一次结婚纪念日{}还有: {}天".format(wedding_anniversary_date_day,
+                                                           get_counter_left(wedding_anniversary_date)),
         "color": get_random_color()
     },
     "words": {
@@ -146,7 +155,17 @@ data = {
         "color": get_random_color()
     },
 }
-
+wordss = data["words"].get("value")
+for item in otherdays:
+    dateS = item.get("date")
+    msg = item.get("msg")
+    type = item.get("type")
+    if type == "countdown":
+        message = msg.format(dateS, get_counter_left(dateS))
+    else:
+        message = msg.format(dateS, get_memorial_days_count(dateS))
+    wordss = message + "\n\n" + wordss
+data["words"]["value"] = wordss
 for index, aim_date in enumerate(split_birthday()):
     key_name = "birthday_left"
     if index != 0:

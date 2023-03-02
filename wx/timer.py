@@ -51,5 +51,5 @@ if __name__ == '__main__':
     env = {**os.environ, **config}
     print("开始运行，等待定时触发...")
     testWeather(env)
-    send_dd_now(env)
+   # send_dd_now(env)
 
